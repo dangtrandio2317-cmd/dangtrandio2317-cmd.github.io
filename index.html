@@ -3,209 +3,806 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trần Văn Đặng | Online Course Recommendations</title>
+  <title>Trần Văn Đặng | Learning Resources & Course Recommendations</title>
+  <meta name="description" content="Educational content website by Trần Văn Đặng featuring online course recommendations, learning resources, and curated guides for business, technology, marketing, Excel, Python, design, and personal development." />
   <style>
     :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --soft: #1f2937;
+      --bg: #0b1220;
+      --bg-soft: #111827;
+      --card: rgba(17, 24, 39, 0.92);
+      --line: #263244;
       --text: #e5e7eb;
-      --muted: #94a3b8;
-      --accent: #22c55e;
-      --line: #334155;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --accent-3: #a78bfa;
+      --white: #ffffff;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      --radius: 22px;
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+      background: linear-gradient(180deg, #08111f 0%, #0f172a 45%, #111827 100%);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
     }
+
+    a { color: #8fdcff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
     .wrap {
-      max-width: 980px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 24px;
+      padding: 0 22px;
     }
-    header {
-      padding: 56px 0 28px;
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(8, 17, 31, 0.82);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+      flex-shrink: 0;
+    }
+
+    .logo span {
+      font-size: 18px;
+      font-weight: 800;
+      color: #062235;
+      letter-spacing: 1px;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 16px;
+      color: var(--white);
+    }
+
+    .brand-text small {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: flex-end;
+      font-size: 14px;
+    }
+
+    .nav a { color: var(--muted); }
+
+    .hero {
+      padding: 54px 0 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card { padding: 34px; }
+
     .badge {
       display: inline-block;
-      padding: 6px 12px;
-      border: 1px solid var(--line);
+      padding: 7px 12px;
       border-radius: 999px;
-      color: var(--muted);
-      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      color: #bfe9ff;
+      font-size: 13px;
       margin-bottom: 16px;
-      background: rgba(255,255,255,0.02);
     }
+
     h1 {
-      font-size: 42px;
-      line-height: 1.15;
+      font-size: 46px;
+      line-height: 1.12;
       margin: 0 0 16px;
+      letter-spacing: -0.4px;
     }
+
     .lead {
       font-size: 18px;
       color: var(--muted);
-      max-width: 720px;
-      margin-bottom: 28px;
+      margin: 0 0 24px;
+      max-width: 760px;
     }
-    .cta {
-      display: inline-block;
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       padding: 12px 18px;
-      background: var(--accent);
-      color: #052e16;
+      border-radius: 12px;
       font-weight: 700;
       text-decoration: none;
-      border-radius: 10px;
     }
-    .grid {
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      color: #04263a;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .mini-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin: 28px 0 36px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
     }
-    .card {
-      background: rgba(17,24,39,0.9);
-      border: 1px solid var(--line);
+
+    .mini {
+      padding: 16px;
       border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
     }
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 20px;
+
+    .mini strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
     }
-    .card p, .card li {
+
+    .mini p {
+      margin: 0;
       color: var(--muted);
+      font-size: 14px;
     }
-    section {
-      margin: 22px 0;
+
+    .stats-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
     }
-    h2 {
+
+    .logo-panel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.14), rgba(34,197,94,0.12));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo-large {
+      width: 78px;
+      height: 78px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo-large span {
       font-size: 28px;
-      margin-bottom: 12px;
+      font-weight: 800;
+      color: #04263a;
+      letter-spacing: 1px;
     }
-    ul {
-      padding-left: 18px;
-      margin: 10px 0;
+
+    .hero-visual {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(56,189,248,0.08));
     }
-    .note {
+
+    .hero-visual svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .info-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .info-item p {
+      margin: 0;
+      color: var(--muted);
       font-size: 14px;
+    }
+
+    section { padding: 16px 0; }
+
+    .section-title {
+      margin-bottom: 16px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+
+    .section-title p {
+      margin: 0;
       color: var(--muted);
     }
-    .footer {
-      border-top: 1px solid var(--line);
-      margin-top: 36px;
-      padding: 28px 0 46px;
-      color: var(--muted);
-      font-size: 14px;
+
+    .grid-3,
+    .grid-2,
+    .grid-4 {
+      display: grid;
+      gap: 18px;
     }
-    a { color: #86efac; }
-    .pill-list {
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card { padding: 24px; }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .card p,
+    .card li { color: var(--muted); }
+
+    .topics {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 14px;
     }
+
     .pill {
       padding: 8px 12px;
-      border: 1px solid var(--line);
       border-radius: 999px;
-      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.03);
       font-size: 14px;
+      color: var(--text);
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .feature-title {
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: var(--white);
+    }
+
+    .sample-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sample-tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.12);
+      color: #bdeaff;
+      font-size: 12px;
+      border: 1px solid rgba(56,189,248,0.2);
+    }
+
+    .image-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .image-card svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .image-card .card-body {
+      padding: 20px;
+    }
+
+    .profile-box {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(34,197,94,0.1));
+      box-shadow: var(--shadow);
+    }
+
+    .avatar svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .muted { color: var(--muted); }
+
+    .contact-box {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer {
+      padding: 36px 0 54px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-box {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: grid;
+      gap: 10px;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .grid-4,
+      .profile-box {
+        grid-template-columns: 1fr;
+      }
+
+      h1 { font-size: 36px; }
+      .topbar-inner { align-items: flex-start; }
+      .nav { justify-content: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .hero-card,
+      .stats-card,
+      .card { padding: 20px; }
+      .logo { width: 46px; height: 46px; }
+      .logo-panel { align-items: flex-start; }
+      .logo-large { width: 66px; height: 66px; }
+      .logo-large span { font-size: 24px; }
+      h1 { font-size: 30px; }
+      .lead { font-size: 16px; }
+      .mini-grid { grid-template-columns: 1fr; }
+      .profile-box { gap: 14px; }
+      .avatar { width: 100px; height: 100px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="badge">Educational content & course recommendations</div>
-      <h1>Helping learners find practical online courses for work, business, and personal growth.</h1>
-      <p class="lead">
-        I publish educational recommendations and curated resources for people who want to improve their skills in business, technology, programming, digital marketing, Excel, design, and career development.
-      </p>
-      <a class="cta" href="#contact">Contact</a>
-    </header>
-
-    <div class="grid">
-      <div class="card">
-        <h3>What I share</h3>
-        <p>Course recommendations, topic guides, study resources, and practical learning suggestions for online audiences.</p>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-label="TVD logo"><span>TVD</span></div>
+        <div class="brand-text">
+          <strong>Trần Văn Đặng</strong>
+          <small>Learning resources, course recommendations, and educational content</small>
+        </div>
       </div>
-      <div class="card">
-        <h3>Main topics</h3>
-        <p>Programming, digital marketing, business, productivity, Excel, Python, design, and personal development.</p>
-      </div>
-      <div class="card">
-        <h3>Audience</h3>
-        <p>Students, professionals, freelancers, and self-learners looking for flexible ways to build useful skills online.</p>
-      </div>
-    </div>
-
-    <section>
-      <h2>Content categories</h2>
-      <div class="pill-list">
-        <div class="pill">Online Learning</div>
-        <div class="pill">Programming</div>
-        <div class="pill">Digital Marketing</div>
-        <div class="pill">Business</div>
-        <div class="pill">Excel</div>
-        <div class="pill">Python</div>
-        <div class="pill">Design</div>
-        <div class="pill">Personal Development</div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>About this site</h2>
-      <p>
-        This website exists to present my educational content focus and the types of online learning resources I promote.
-        I plan to publish curated course suggestions, learning pathways, and useful recommendations for learners who want to improve practical skills.
-      </p>
-      <p>
-        At the moment, this site serves as a public profile for my content and partnership applications while I continue building more published recommendations.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Affiliate disclosure</h2>
-      <p>
-        Some links on this website may be affiliate links. If you click a link and make a purchase, I may earn a commission at no extra cost to you.
-        I only intend to recommend courses and learning resources that are relevant to my audience.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Privacy notice</h2>
-      <p>
-        This website does not directly collect sensitive personal information. If visitors contact me by email, that information is only used to respond to the message.
-        Any analytics or third-party services used in the future will be updated in this notice.
-      </p>
-    </section>
-
-    <section class="card" id="contact">
-      <h2>Contact</h2>
-      <p>
-        Email: <a href="mailto:dangtrandio2317@gmail.com">dangtrandio2317@gmail.com</a>
-      </p>
-      <p class="note">
-        Contact email updated and ready for publishing.
-      </p>
-    </section>
-
-    <div class="footer">
-      <strong>To customize before publishing:</strong>
-      <ul>
-        <li>Replace the contact email with your real email.</li>
-        <li>Website title updated to Trần Văn Đặng.</li>
-        <li>Add links to your Facebook, TikTok, YouTube, or other channels once you start posting.</li>
-        <li>Publish this page on GitHub Pages, Netlify, or Carrd/custom domain.</li>
-      </ul>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#topics">Topics</a>
+        <a href="#visuals">Highlights</a>
+        <a href="#editorial">Editorial Policy</a>
+        <a href="#disclosure">Disclosure</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="badge">Independent educational content website</div>
+          <h1>Helping learners discover useful online courses and practical skill-building resources.</h1>
+          <p class="lead">
+            I share curated learning recommendations for students, professionals, freelancers, and self-learners who want to improve their skills in business, programming, digital marketing, Excel, Python, design, and personal development.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Contact Me</a>
+            <a class="btn btn-secondary" href="#topics">View Topics</a>
+          </div>
+          <div class="mini-grid">
+            <div class="mini">
+              <strong>Content focus</strong>
+              <p>Online learning guides, course discovery, and educational recommendations.</p>
+            </div>
+            <div class="mini">
+              <strong>Audience focus</strong>
+              <p>Learners looking for flexible, practical, career-relevant digital skills.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card stats-card">
+          <div class="logo-panel">
+            <div class="logo-large"><span>TVD</span></div>
+            <div>
+              <h3 style="margin:0 0 6px;">TVD Learning Picks</h3>
+              <p class="muted" style="margin:0;">A personal educational content project by Trần Văn Đặng.</p>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Learning illustration">
+            <svg viewBox="0 0 520 290" xmlns="http://www.w3.org/2000/svg" role="img">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.65"/>
+                  <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.55"/>
+                </linearGradient>
+                <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#22c55e" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.5"/>
+                </linearGradient>
+              </defs>
+              <rect width="520" height="290" rx="26" fill="#0f172a"/>
+              <circle cx="430" cy="70" r="62" fill="url(#g1)"/>
+              <circle cx="96" cy="230" r="74" fill="url(#g2)"/>
+              <rect x="44" y="42" width="190" height="118" rx="18" fill="#131d31" stroke="#2c3d57"/>
+              <rect x="66" y="66" width="102" height="14" rx="7" fill="#5dd3ff" opacity="0.85"/>
+              <rect x="66" y="95" width="136" height="11" rx="5" fill="#7c8da8" opacity="0.7"/>
+              <rect x="66" y="116" width="108" height="11" rx="5" fill="#7c8da8" opacity="0.5"/>
+              <rect x="260" y="68" width="216" height="144" rx="22" fill="#111827" stroke="#32435f"/>
+              <rect x="286" y="95" width="58" height="92" rx="14" fill="#15253d"/>
+              <rect x="357" y="126" width="58" height="61" rx="14" fill="#19304d"/>
+              <rect x="428" y="109" width="24" height="78" rx="10" fill="#5dd3ff" opacity="0.9"/>
+              <path d="M96 201 C158 164 195 168 250 182 C304 195 348 164 398 132" stroke="#86efac" stroke-width="8" fill="none" stroke-linecap="round"/>
+              <circle cx="96" cy="201" r="8" fill="#86efac"/>
+              <circle cx="250" cy="182" r="8" fill="#86efac"/>
+              <circle cx="398" cy="132" r="8" fill="#86efac"/>
+            </svg>
+          </div>
+
+          <div class="info-list">
+            <div class="info-item">
+              <strong>Main niches</strong>
+              <p>Online learning, business, technology, programming, marketing, and productivity.</p>
+            </div>
+            <div class="info-item">
+              <strong>Promotion methods</strong>
+              <p>Website content, curated recommendations, educational summaries, and future social content distribution.</p>
+            </div>
+            <div class="info-item">
+              <strong>Partnership intent</strong>
+              <p>To recommend relevant learning resources and courses that match audience interests and skill goals.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-title">
+        <h2>About this website</h2>
+        <p>This site presents my educational content focus, editorial approach, and the types of learning resources I plan to publish and recommend.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="profile-box">
+            <div class="avatar" aria-label="Profile graphic">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img">
+                <rect width="120" height="120" rx="26" fill="#0f172a"/>
+                <circle cx="60" cy="44" r="20" fill="#7dd3fc" opacity="0.95"/>
+                <path d="M28 96c6-17 19-28 32-28s26 11 32 28" fill="#86efac" opacity="0.9"/>
+                <rect x="18" y="16" width="84" height="88" rx="22" stroke="#314258" fill="none"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Who I am</h3>
+              <p>
+                My name is <strong>Trần Văn Đặng</strong>. I am building an educational content project focused on helping people find useful online courses, learning pathways, and practical resources for career development and personal growth.
+              </p>
+            </div>
+          </div>
+          <p>
+            This website serves as my public content profile and will be expanded with curated learning recommendations, topic-based guides, and course selection insights.
+          </p>
+        </div>
+        <div class="card">
+          <h3>What I publish</h3>
+          <ul class="list">
+            <li>Course recommendations by topic and skill level</li>
+            <li>Beginner-friendly learning roadmaps</li>
+            <li>Educational resource roundups</li>
+            <li>Skill-building guides for business and technology</li>
+            <li>Curated suggestions for self-paced online learners</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="section-title">
+        <h2>Main content topics</h2>
+        <p>These are the core areas this website is focused on for recommendations and educational content.</p>
+      </div>
+      <div class="card">
+        <div class="topics">
+          <span class="pill">Online Learning</span>
+          <span class="pill">Business</span>
+          <span class="pill">Programming</span>
+          <span class="pill">Digital Marketing</span>
+          <span class="pill">Excel</span>
+          <span class="pill">Python</span>
+          <span class="pill">Design</span>
+          <span class="pill">Productivity</span>
+          <span class="pill">Career Development</span>
+          <span class="pill">Personal Development</span>
+          <span class="pill">Technology</span>
+          <span class="pill">Self-Learning</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="visuals">
+      <div class="section-title">
+        <h2>Visual highlights</h2>
+        <p>I added visual content blocks to present the website more clearly and make the learning focus easier to understand.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card image-card">
+          <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Learning roadmap visual">
+            <rect width="420" height="220" fill="#0f172a"/>
+            <circle cx="74" cy="92" r="28" fill="#38bdf8" opacity="0.8"/>
+            <circle cx="206" cy="66" r="28" fill="#a78bfa" opacity="0.78"/>
+            <circle cx="338" cy="130" r="28" fill="#22c55e" opacity="0.8"/>
+            <path d="M74 92 C120 86 154 76 206 66 C260 58 295 86 338 130" stroke="#c4b5fd" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <rect x="48" y="152" width="92" height="22" rx="10" fill="#1e293b"/>
+            <rect x="160" y="152" width="92" height="22" rx="10" fill="#1e293b"/>
+            <rect x="272" y="152" width="92" height="22" rx="10" fill="#1e293b"/>
+          </svg>
+          <div class="card-body">
+            <h3>Learning roadmaps</h3>
+            <p>Visual guides can help learners quickly understand skill progression and choose a clearer starting point.</p>
+          </div>
+        </div>
+        <div class="card image-card">
+          <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Course comparison visual">
+            <rect width="420" height="220" fill="#0f172a"/>
+            <rect x="44" y="42" width="108" height="138" rx="18" fill="#111827" stroke="#2d3d57"/>
+            <rect x="156" y="30" width="108" height="150" rx="18" fill="#15263c" stroke="#406083"/>
+            <rect x="268" y="54" width="108" height="126" rx="18" fill="#111827" stroke="#2d3d57"/>
+            <rect x="64" y="70" width="68" height="12" rx="6" fill="#7dd3fc" opacity="0.75"/>
+            <rect x="176" y="58" width="68" height="12" rx="6" fill="#86efac" opacity="0.9"/>
+            <rect x="288" y="82" width="68" height="12" rx="6" fill="#c4b5fd" opacity="0.78"/>
+            <rect x="64" y="100" width="50" height="10" rx="5" fill="#6b7280"/>
+            <rect x="176" y="88" width="50" height="10" rx="5" fill="#6b7280"/>
+            <rect x="288" y="112" width="50" height="10" rx="5" fill="#6b7280"/>
+            <circle cx="210" cy="150" r="12" fill="#86efac"/>
+          </svg>
+          <div class="card-body">
+            <h3>Course comparisons</h3>
+            <p>Comparison-style visuals make recommendations look more structured and useful for people evaluating options.</p>
+          </div>
+        </div>
+        <div class="card image-card">
+          <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skill growth visual">
+            <rect width="420" height="220" fill="#0f172a"/>
+            <path d="M54 170 L54 54" stroke="#2e405a" stroke-width="8" stroke-linecap="round"/>
+            <path d="M54 170 L366 170" stroke="#2e405a" stroke-width="8" stroke-linecap="round"/>
+            <rect x="94" y="134" width="48" height="36" rx="10" fill="#38bdf8" opacity="0.72"/>
+            <rect x="170" y="104" width="48" height="66" rx="10" fill="#60a5fa" opacity="0.78"/>
+            <rect x="246" y="76" width="48" height="94" rx="10" fill="#a78bfa" opacity="0.82"/>
+            <rect x="322" y="42" width="48" height="128" rx="10" fill="#22c55e" opacity="0.86"/>
+            <path d="M104 86 C148 60 196 56 260 60 C300 62 328 48 354 26" stroke="#86efac" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <circle cx="354" cy="26" r="8" fill="#86efac"/>
+          </svg>
+          <div class="card-body">
+            <h3>Skill growth themes</h3>
+            <p>Growth-oriented images support the idea that the site is focused on practical learning and progression.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>How I plan to help learners</h2>
+        <p>The website is structured to make learning choices simpler and more relevant to audience needs.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="feature-title">1. Curated selection</div>
+          <p>I aim to recommend relevant courses and resources by topic, level, and learner intent rather than presenting random lists.</p>
+        </div>
+        <div class="card">
+          <div class="feature-title">2. Practical use cases</div>
+          <p>Recommendations are intended to support real skill-building goals such as improving productivity, learning software tools, and gaining digital career skills.</p>
+        </div>
+        <div class="card">
+          <div class="feature-title">3. Clear topic organization</div>
+          <p>Content is organized around popular learning categories including business, technology, marketing, coding, Excel, and design.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Planned content examples</h2>
+        <p>These sample categories show the type of educational content this website is being built to publish.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card sample-card">
+          <span class="sample-tag">Sample guide</span>
+          <h3>Best beginner-friendly courses for digital skills</h3>
+          <p>A curated introduction to practical courses for new learners who want to improve business, office, and software skills.</p>
+        </div>
+        <div class="card sample-card">
+          <span class="sample-tag">Sample roundup</span>
+          <h3>Useful Python and Excel learning paths</h3>
+          <p>A topic-based recommendation page for learners exploring data, automation, office productivity, and foundational coding skills.</p>
+        </div>
+        <div class="card sample-card">
+          <span class="sample-tag">Sample comparison</span>
+          <h3>How to choose the right online course</h3>
+          <p>A guide explaining how learners can compare topics, difficulty levels, course outcomes, and relevance before enrolling.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="editorial">
+      <div class="section-title">
+        <h2>Editorial policy</h2>
+        <p>This section explains how learning resources and courses are intended to be selected and presented.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Selection approach</h3>
+          <ul class="list">
+            <li>Focus on topics relevant to the website audience</li>
+            <li>Prefer practical, skills-based educational resources</li>
+            <li>Organize recommendations by learner needs and interests</li>
+            <li>Aim for clarity, usefulness, and topic relevance</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Content standards</h3>
+          <ul class="list">
+            <li>Clear categorization by topic and use case</li>
+            <li>Audience-focused educational recommendations</li>
+            <li>Transparent affiliate disclosure where applicable</li>
+            <li>Only relevant links and resources intended for learners</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="disclosure">
+      <div class="grid-2">
+        <div class="card">
+          <h3>Affiliate disclosure</h3>
+          <p>
+            Some links on this website may be affiliate links. If a visitor clicks a link and makes a purchase, I may earn a commission at no extra cost to the visitor.
+            Any affiliate relationship will be disclosed clearly, and recommendations are intended to stay relevant to the interests of online learners.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Privacy notice</h3>
+          <p>
+            This website does not intentionally collect sensitive personal information. If a visitor contacts me by email, the information provided is used only for communication and reply purposes.
+            This page may be updated in the future if additional services or analytics tools are added.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>For educational content inquiries, partnership communication, or website questions, please contact me by email.</p>
+      </div>
+      <div class="card">
+        <div class="contact-box">
+          <a class="contact-link" href="mailto:dangtrandio2317@gmail.com">dangtrandio2317@gmail.com</a>
+          <p class="muted" style="margin:0;">Owner and content profile: Trần Văn Đặng</p>
+          <p class="muted" style="margin:0;">You can later replace the profile graphic or logo with your real photo or brand logo for an even stronger trust signal.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-box">
+      <div>© 2026 Trần Văn Đặng. All rights reserved.</div>
+      <div>This website is an educational content profile focused on online learning resources, course recommendations, and skill development topics.</div>
+    </div>
+  </footer>
 </body>
 </html>
