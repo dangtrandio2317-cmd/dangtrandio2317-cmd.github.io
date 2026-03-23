@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trần Văn Đặng | Online Course Recommendations</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --soft: #1f2937;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #22c55e;
+      --line: #334155;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header {
+      padding: 56px 0 28px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+    h1 {
+      font-size: 42px;
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+    .lead {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+    .cta {
+      display: inline-block;
+      padding: 12px 18px;
+      background: var(--accent);
+      color: #052e16;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 28px 0 36px;
+    }
+    .card {
+      background: rgba(17,24,39,0.9);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    .card p, .card li {
+      color: var(--muted);
+    }
+    section {
+      margin: 22px 0;
+    }
+    h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    ul {
+      padding-left: 18px;
+      margin: 10px 0;
+    }
+    .note {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      margin-top: 36px;
+      padding: 28px 0 46px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    a { color: #86efac; }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .pill {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">Educational content & course recommendations</div>
+      <h1>Helping learners find practical online courses for work, business, and personal growth.</h1>
+      <p class="lead">
+        I publish educational recommendations and curated resources for people who want to improve their skills in business, technology, programming, digital marketing, Excel, design, and career development.
+      </p>
+      <a class="cta" href="#contact">Contact</a>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h3>What I share</h3>
+        <p>Course recommendations, topic guides, study resources, and practical learning suggestions for online audiences.</p>
+      </div>
+      <div class="card">
+        <h3>Main topics</h3>
+        <p>Programming, digital marketing, business, productivity, Excel, Python, design, and personal development.</p>
+      </div>
+      <div class="card">
+        <h3>Audience</h3>
+        <p>Students, professionals, freelancers, and self-learners looking for flexible ways to build useful skills online.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>Content categories</h2>
+      <div class="pill-list">
+        <div class="pill">Online Learning</div>
+        <div class="pill">Programming</div>
+        <div class="pill">Digital Marketing</div>
+        <div class="pill">Business</div>
+        <div class="pill">Excel</div>
+        <div class="pill">Python</div>
+        <div class="pill">Design</div>
+        <div class="pill">Personal Development</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>About this site</h2>
+      <p>
+        This website exists to present my educational content focus and the types of online learning resources I promote.
+        I plan to publish curated course suggestions, learning pathways, and useful recommendations for learners who want to improve practical skills.
+      </p>
+      <p>
+        At the moment, this site serves as a public profile for my content and partnership applications while I continue building more published recommendations.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Affiliate disclosure</h2>
+      <p>
+        Some links on this website may be affiliate links. If you click a link and make a purchase, I may earn a commission at no extra cost to you.
+        I only intend to recommend courses and learning resources that are relevant to my audience.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Privacy notice</h2>
+      <p>
+        This website does not directly collect sensitive personal information. If visitors contact me by email, that information is only used to respond to the message.
+        Any analytics or third-party services used in the future will be updated in this notice.
+      </p>
+    </section>
+
+    <section class="card" id="contact">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:dangtrandio2317@gmail.com">dangtrandio2317@gmail.com</a>
+      </p>
+      <p class="note">
+        Contact email updated and ready for publishing.
+      </p>
+    </section>
+
+    <div class="footer">
+      <strong>To customize before publishing:</strong>
+      <ul>
+        <li>Replace the contact email with your real email.</li>
+        <li>Website title updated to Trần Văn Đặng.</li>
+        <li>Add links to your Facebook, TikTok, YouTube, or other channels once you start posting.</li>
+        <li>Publish this page on GitHub Pages, Netlify, or Carrd/custom domain.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
